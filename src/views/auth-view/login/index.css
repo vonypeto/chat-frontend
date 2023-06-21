@@ -1,0 +1,44 @@
+.auth-login-card {
+  width: 1000px !important;
+  margin: 150px 0px !important;
+}
+
+.auth-login-left {
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+
+.auth-footer {
+  text-align: center !important;
+  margin: 16px 0px 0px 0px !important; 
+  padding: 0px 10px !important;
+  background-color: white !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+.auth-footer-content {
+  height: 100% !important;
+}
+
+@media (max-width: 1399px) {
+  .auth-login-card {
+    width: 600px !important;
+    margin: 50px 0px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .auth-login-card{
+    width: 300px !important;
+  }
+  
+}
+
+@media (max-height: 810px) {
+  .auth-footer {
+    position: relative !important;
+  }
+}
