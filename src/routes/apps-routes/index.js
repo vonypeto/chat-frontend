@@ -14,6 +14,10 @@ const AppRoute = [
         element: <Home />,
       },
       {
+        path: "home/:chat",
+        element: <Home />,
+      },
+      {
         path: "",
         element: <Navigate to="home" replace />,
       },

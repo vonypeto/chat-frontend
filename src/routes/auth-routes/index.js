@@ -12,6 +12,11 @@ const AuthRoute = [
   },
   { path: "/auth/login", element: <Login />, exact: true },
   { path: "/auth/register", element: <SignUp />, exact: true },
+  {
+    path: "*",
+    element: <Navigate to="/auth/login" replace />,
+    exact: true,
+  },
 ];
 
 export default AuthRoute;

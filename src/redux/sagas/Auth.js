@@ -31,7 +31,12 @@ export function* signInWithFBEmail() {
       if (user.message) {
         yield put(showAuthMessage(user.message));
       } else {
-        localStorage.setItem(AUTH_TOKEN, user.user.uid);
+        const jsonString = JSON.stringify({
+          user: user.user.uid,
+          username: user.user.displayName,
+        });
+
+        localStorage.setItem(AUTH_TOKEN, jsonString);
 
         yield put(authenticated({ user: user.user.uid, test: "test" }));
       }
@@ -71,7 +76,13 @@ export function* signUpWithFBEmail() {
       if (user.message) {
         yield put(showAuthMessage(user.message));
       } else {
-        localStorage.setItem(AUTH_TOKEN, user.user.uid);
+        const jsonString = JSON.stringify({
+          user: user.user.uid,
+          username: user.user.displayName,
+        });
+
+        localStorage.setItem(AUTH_TOKEN, jsonString);
+        // localStorage.setItem(AUTH_TOKEN, user.user.uid);
         yield put(signUpSuccess(user.user.uid));
       }
     } catch (error) {

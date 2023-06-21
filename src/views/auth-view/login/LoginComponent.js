@@ -12,8 +12,6 @@ import {
   showLoading,
   showAuthMessage,
   hideAuthMessage,
-  signInWithGoogle,
-  signInWithFacebook,
   signOut,
 } from "redux/actions/Auth";
 import AuthService from "services/auth-services/BasicAuthServies";
@@ -21,8 +19,7 @@ export const LoginComponent = (props) => {
   const {
     hideAuthMessage,
     showLoading,
-    signInWithGoogle,
-    signInWithFacebook,
+
     signIn,
     token,
     loading,
@@ -36,24 +33,13 @@ export const LoginComponent = (props) => {
   const data = useSelector((state) => state);
   console.log(data);
   const dispatch = useDispatch();
-
   const onLogin = (values) => {
     console.log(values);
-    const datas = "your-token-value";
-    dispatch(setHello(values.email));
+    // const datas = "your-token-value";
+    // dispatch(setHello(values.email));
     console.log(data);
     showLoading();
     signIn(values);
-  };
-
-  const onGoogleLogin = () => {
-    showLoading();
-    signInWithGoogle();
-  };
-
-  const onFacebookLogin = () => {
-    showLoading();
-    signInWithFacebook();
   };
 
   useEffect(() => {
@@ -69,19 +55,15 @@ export const LoginComponent = (props) => {
 
   useEffect(() => {
     let cancel = true;
-
     if (token !== null) {
-      history(redirect);
+      window.location.replace("/");
     }
-
     if (showMessage) {
       const timer = setTimeout(hideAuthMessage, 3000);
-
       return () => {
         clearTimeout(timer);
       };
     }
-
     return () => {
       cancel = false;
     };
@@ -144,35 +126,6 @@ export const LoginComponent = (props) => {
               </Row>
             </Form.Item>
 
-            <Form.Item>
-              <Row justify="center" gutter={10}>
-                <Col>
-                  <Button
-                    className="d-flex justify-content-center text-center  align-items-center"
-                    onClick={onGoogleLogin}
-                  >
-                    <FcGoogle size={20} style={{ marginRight: "10px" }} /> Sign
-                    in with Google
-                  </Button>
-                </Col>
-                <Col>
-                  <Button
-                    className="d-flex justify-content-center text-center  align-items-center"
-                    onClick={onFacebookLogin}
-                  >
-                    <FaFacebook
-                      size={20}
-                      style={{
-                        marginRight: "10px",
-                        color: "#4267B2",
-                      }}
-                    />
-                    Sign in with Facebook
-                  </Button>
-                </Col>
-              </Row>
-            </Form.Item>
-
             <Row justify="center" style={{ marginBottom: "10px" }}>
               <Col>
                 <a href="/auth/register">
@@ -198,8 +151,7 @@ const mapDispatchToProps = {
   showAuthMessage,
   showLoading,
   hideAuthMessage,
-  signInWithGoogle,
-  signInWithFacebook,
+
   setHello,
 };
 

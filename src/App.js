@@ -5,6 +5,9 @@ import { ThemeSwitcherProvider } from "react-css-theme-switcher";
 import store from "./redux/store";
 import Loading from "components/shared-components/Loading";
 import routesConfig from "routes";
+import { AuthProvider } from "./context/AuthContext";
+import { SocketProvider } from "./context/SocketIO";
+
 function App() {
   const routerConfiguration = () => {
     routesConfig.map((routerData, i) => {
@@ -26,40 +29,46 @@ function App() {
   return (
     <>
       {console.log(routesConfig)}{" "}
-      <Provider store={store}>
-        <ThemeSwitcherProvider
-          themeMap={themes}
-          defaultTheme={{ currentTheme: "light" }}
-          insertionPoint="styles-insertion-point"
-        >
-          <BrowserRouter>
-            <Suspense fallback={<Loading cover="page" />}>
-              <Routes>
-                {routesConfig.map((routerData, i) => {
-                  console.log(routerData);
-                  return (
-                    <Route
-                      key={i}
-                      path={routerData.path}
-                      element={routerData.element}
-                      exact={routerData.exact}
-                    >
-                      {routerData.children &&
-                        routerData.children.map((childRoute, childIndex) => (
-                          <Route
-                            key={childIndex}
-                            path={childRoute.path}
-                            element={childRoute.element}
-                          />
-                        ))}
-                    </Route>
-                  );
-                })}
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
-        </ThemeSwitcherProvider>{" "}
-      </Provider>
+      <SocketProvider>
+        <AuthProvider>
+          <Provider store={store}>
+            <ThemeSwitcherProvider
+              themeMap={themes}
+              defaultTheme={{ currentTheme: "light" }}
+              insertionPoint="styles-insertion-point"
+            >
+              <BrowserRouter>
+                <Suspense fallback={<Loading cover="page" />}>
+                  <Routes>
+                    {routesConfig.map((routerData, i) => {
+                      console.log(routerData);
+                      return (
+                        <Route
+                          key={i}
+                          path={routerData.path}
+                          element={routerData.element}
+                          exact={routerData.exact}
+                        >
+                          {routerData.children &&
+                            routerData.children.map(
+                              (childRoute, childIndex) => (
+                                <Route
+                                  key={childIndex}
+                                  path={childRoute.path}
+                                  element={childRoute.element}
+                                />
+                              )
+                            )}
+                        </Route>
+                      );
+                    })}
+                  </Routes>
+                </Suspense>
+              </BrowserRouter>
+            </ThemeSwitcherProvider>{" "}
+          </Provider>{" "}
+        </AuthProvider>
+      </SocketProvider>
     </>
   );
 }

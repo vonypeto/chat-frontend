@@ -29,3 +29,78 @@
 .ant-checkbox-inner,
 .ant-checkbox-input {
 }
+.conversation-container {
+  /* display: flex; */
+
+  flex-direction: column;
+  align-items: flex-start;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.connected-users {
+  overflow-y: auto;
+  max-height: 300px;
+}
+.ant-card-body {
+  padding: 0px !important;
+}
+
+.conversation-container {
+}
+
+.conversation-messages {
+  margin: 5px 5px 5px 5px;
+  height: calc(100% - 70px); /* Adjust the height of the messages container */
+  overflow-y: auto;
+  padding-bottom: 50px;
+}
+
+.conversation-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+.message-input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.send-button {
+  background-color: #1890ff;
+  color: #fff;
+  border: none;
+}
+
+.send-button:hover {
+  background-color: #40a9ff;
+}
+.message-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.right .message-content {
+  align-self: flex-end;
+  background-color: lightblue;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.left .message-content {
+  align-self: flex-start;
+  background-color: lightgreen;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.coversation-active {
+  background-color: #80808030;
+}
