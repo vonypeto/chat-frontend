@@ -49,4 +49,6 @@ const Online = (props) => {
   );
 };
 
-export default Online;
+export default React.memo(Online, (prevProps, nextProps) => {
+  return prevProps.loading === nextProps.loading;
+});
