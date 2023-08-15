@@ -13,3 +13,27 @@ build_rules:
       - oss_vuln
     options:
       reachable: true
+  - id: Allow no specific vulnerability types
+    finding_types:
+      - Cookie Injection
+      - Deserialization
+      - Directory Traversal
+      - File Write
+      - Insecure Cookie
+      - LDAP Injection
+      - Mail Injection
+      - Mass Assignment
+      - NoSQL Injection
+      - Open Redirect
+      - Remote Code Execution
+      - Sensitive Data Leak
+      - Session Injection
+      - SQL Injection
+      - TLS checks are disabled
+      - Usage of insecure API
+      - Weak Hash
+      - Weak Random
+      - XML Injection
+      - XPath Injection
+      - XSS
+      - XXE

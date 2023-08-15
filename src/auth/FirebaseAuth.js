@@ -6,7 +6,7 @@ import firebaseConfig from "configs/FirebaseConfig";
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-// firebase utils
+// firebase utils test
 const db = firebase.firestore();
 const auth = firebase.auth();
 const currentUser = auth.currentUser;
