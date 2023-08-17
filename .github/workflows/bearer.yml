@@ -1,5 +1,5 @@
 
-name: ShiftLeft
+name: Bearer
 on:
   pull_request:
   workflow_dispatch:
